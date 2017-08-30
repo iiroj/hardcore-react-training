@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import s from './styles.pcss';
 
 import personService from '../../services/person';
-import Person from '../Person';
+import PersonList from '../PersonList';
 
 export default class App extends Component {
   constructor(props) {
@@ -22,18 +22,11 @@ export default class App extends Component {
   render() {
     const { loading, persons } = this.state;
 
-    const personList = persons.map(person => (
-      <li key={person.id}>
-        <Person person={person} />
-      </li>
-    ));
-    const renderPersonList = personList.length > 0;
-
     return (
       <div className={s.app}>
         <h1 className={s.heading}>Fraktio ERP</h1>
-        {loading && <p>Loading...</p>}
-        {renderPersonList && <ul>{personList}</ul>}
+        <PersonList loading={loading} persons={persons} title="Hyvät resurssit" />
+        <PersonList loading={loading} persons={persons} title="Huonot resurssit" />
       </div>
     );
   }
