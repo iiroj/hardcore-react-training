@@ -1,31 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import reset from 'css-wipe/js';
+import styled, { injectGlobal } from 'styled-components';
 
 import personService from '../services/person';
-
 import Person from './Person';
 
-const persons = Array(30)
-  .fill()
-  .map(personService.createPerson);
+injectGlobal`
+  ${reset}
 
-const App = props => {
-  const { className } = props;
+  html {
+    font-family: 'Comic Sans Ms';
+  }
+`;
 
+const Container = styled.div`margin: 1em;`;
+
+const App = () => {
+  const persons = Array(30)
+    .fill()
+    .map(personService.createPerson);
   const personList = persons.map(person => (
     <li key={person.id}>
       <Person person={person} />
     </li>
   ));
-
   const renderPersonList = personList.length > 0;
 
   return (
-    <div className={className}>
+    <Container>
       <h1>Fraktio ERP</h1>
       {renderPersonList && <ul>{personList}</ul>}
-    </div>
+    </Container>
   );
 };
 
@@ -33,6 +39,4 @@ App.propTypes = {
   className: PropTypes.string,
 };
 
-export default styled(App)`
-  margin: 1em;
-`;
+export default App;
