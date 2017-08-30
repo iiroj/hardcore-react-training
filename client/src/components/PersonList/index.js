@@ -11,7 +11,7 @@ const PersonList = props => {
 
   if (loading)
     return (
-      <div>
+      <div className={s.list}>
         <h2 className={s.title}>{title}</h2>
         <Loading />
       </div>
@@ -19,7 +19,7 @@ const PersonList = props => {
 
   if (persons.length === 0)
     return (
-      <div>
+      <div className={s.list}>
         <h2 className={s.title}>{title}</h2>
         <p>Ei resursseja</p>
       </div>
@@ -31,9 +31,14 @@ const PersonList = props => {
     </li>
   ));
 
+  const averageAge = persons.reduce((a, b) => a + b.age, 0) / persons.length;
+
   return (
-    <div>
-      <h2 className={s.title}>{title}</h2>
+    <div className={s.list}>
+      <div className={s.heading}>
+        <h2 className={s.title}>{title}</h2>
+        <h3 className={s.age}>Keski-ikä: {averageAge.toFixed(0)}</h3>
+      </div>
       <ul>{list}</ul>
     </div>
   );

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import s from './styles.pcss';
+import Button from '../form/Button';
 
 const supportedGenders = {
   m: 'mies',
@@ -22,12 +23,17 @@ const Person = props => {
 
   return (
     <article className={classNames}>
-      <p className={s.name}>
-        <strong>{person.lastName}</strong>, {person.firstName}
-      </p>
-      <p>
-        <span>{supportedGenders[person.gender]}</span>, <span>{person.age}</span>
-      </p>
+      <div className={s.info}>
+        <p className={s.name}>
+          <strong>{person.lastName}</strong>, {person.firstName}
+        </p>
+        <p>
+          <span>{supportedGenders[person.gender]}</span>, <span>{person.age}</span>
+        </p>
+      </div>
+      <footer className={s.footer}>
+        <Button color="red">Poista resurssi</Button>
+      </footer>
     </article>
   );
 };
