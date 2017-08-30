@@ -9,7 +9,7 @@
     "build": "yarn run clean && yarn run build:client",
     "lint": "eslint src --ext js",
     "babel-node": "babel-node",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --port 8888 --history-api-fallback --hot --inline --content-base src/",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --port 8888 --history-api-fallback",
     "flow": "flow",
     "test": "jest"
   },
