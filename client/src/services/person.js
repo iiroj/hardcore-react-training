@@ -16,7 +16,10 @@ const createPerson = () => {
 
 const getPersons = () => axios.get(`${process.env.REACT_APP_API}/person`).then(ret => ret.data);
 
+const delPerson = id => console.log(id);
+
 export default {
   createPerson,
   getPersons,
+  delPerson,
 };

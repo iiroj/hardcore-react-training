@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import s from './styles.pcss';
 import Loading from '../Loading';
 import Person from '../Person';
 
 const PersonList = props => {
-  const { loading, persons } = props;
+  const { loading, persons, delPerson } = props;
 
   const title = props.title || 'Lista';
 
@@ -21,13 +22,13 @@ const PersonList = props => {
     return (
       <div className={s.list}>
         <h2 className={s.title}>{title}</h2>
-        <p>Ei resursseja</p>
+        <p className={s.empty}>Ei resursseja</p>
       </div>
     );
 
   const list = persons.map(person => (
     <li key={person.id}>
-      <Person person={person} />
+      <Person person={person} delPerson={delPerson} />
     </li>
   ));
 
@@ -42,6 +43,12 @@ const PersonList = props => {
       <ul>{list}</ul>
     </div>
   );
+};
+
+PersonList.propTypes = {
+  delPerson: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  persons: PropTypes.array.isRequired,
 };
 
 export default PersonList;

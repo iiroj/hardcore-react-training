@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { pure } from 'recompose';
 
 import s from './styles.pcss';
 import Button from '../form/Button';
@@ -11,7 +12,7 @@ const supportedGenders = {
 };
 
 const Person = props => {
-  const { person } = props;
+  const { person, delPerson } = props;
 
   const classNames = cx([
     s.person,
@@ -32,7 +33,9 @@ const Person = props => {
         </p>
       </div>
       <footer className={s.footer}>
-        <Button color="red">Poista resurssi</Button>
+        <Button onClick={() => delPerson(person.id)} color="red">
+          Poista resurssi
+        </Button>
       </footer>
     </article>
   );
@@ -48,4 +51,4 @@ Person.propTypes = {
   }),
 };
 
-export default Person;
+export default pure(Person);
