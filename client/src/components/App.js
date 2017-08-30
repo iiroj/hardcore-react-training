@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import personService from '../services/person';
 
@@ -8,7 +10,9 @@ const persons = Array(30)
   .fill()
   .map(personService.createPerson);
 
-const App = () => {
+const App = props => {
+  const { className } = props;
+
   const personList = persons.map(person => (
     <li key={person.id}>
       <Person person={person} />
@@ -18,11 +22,17 @@ const App = () => {
   const renderPersonList = personList.length > 0;
 
   return (
-    <div>
+    <div className={className}>
       <h1>Fraktio ERP</h1>
       {renderPersonList && <ul>{personList}</ul>}
     </div>
   );
 };
 
-export default App;
+App.propTypes = {
+  className: PropTypes.string,
+};
+
+export default styled(App)`
+  margin: 1em;
+`;

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './Person.pcss';
+
 const Person = props => {
   const { person } = props;
 
   return (
-    <article>
+    <article className={styles.person}>
       <p>
         <strong>{person.lastName}</strong>, {person.firstName}
       </p>

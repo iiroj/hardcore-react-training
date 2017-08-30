@@ -37,6 +37,7 @@
     "@dr-kobros/react-webfont-loader": "^2.0.1",
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
+    "css-wipe": "^4.3.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.2.0",
     "faker": "^4.1.0",
