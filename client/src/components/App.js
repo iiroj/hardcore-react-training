@@ -14,6 +14,13 @@ injectGlobal`
   }
 `;
 
+const Header = styled.h1`
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 2em;
+  margin-bottom: 0.5em;
+`;
+
 const Container = styled.div`margin: 1em;`;
 
 const App = () => {
@@ -29,7 +36,7 @@ const App = () => {
 
   return (
     <Container>
-      <h1>Fraktio ERP</h1>
+      <Header>Fraktio ERP</Header>
       {renderPersonList && <ul>{personList}</ul>}
     </Container>
   );
