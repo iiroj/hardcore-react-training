@@ -9,16 +9,18 @@ const persons = Array(30)
   .map(personService.createPerson);
 
 const App = () => {
+  const personList = persons.map(person => (
+    <li key={person.id}>
+      <Person person={person} />
+    </li>
+  ));
+
+  const renderPersonList = personList.length > 0;
+
   return (
     <div>
       <h1>Fraktio ERP</h1>
-      <ul>
-        {persons.map(person => (
-          <li key={person.id}>
-            <Person person={person} />
-          </li>
-        ))}
-      </ul>
+      {renderPersonList && <ul>{personList}</ul>}
     </div>
   );
 };
