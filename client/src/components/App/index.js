@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import s from './styles.pcss';
 
+import trollo from '../../assets/trollo.png';
 import personService from '../../services/person';
 import Button from '../form/Button';
+import AddResource from '../AddResource';
 import PersonList from '../PersonList';
-import trollo from '../../assets/trollo.png';
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -35,6 +36,12 @@ export default class App extends PureComponent {
     });
   };
 
+  addPerson = person => {
+    this.setState({
+      persons: this.state.persons.concat([person]),
+    });
+  };
+
   componentWillMount() {
     this.loadPersons();
   }
@@ -54,8 +61,13 @@ export default class App extends PureComponent {
             Päivitä
           </Button>
         </header>
-        <PersonList loading={loading} persons={goodPersons} title="Hyvät resurssit" delPerson={this.delPerson} />
-        <PersonList loading={loading} persons={badPersons} title="Huonot resurssit" delPerson={this.delPerson} />
+        <section>
+          <AddResource addPerson={this.addPerson} />
+        </section>
+        <section>
+          <PersonList loading={loading} persons={goodPersons} title="Hyvät resurssit" delPerson={this.delPerson} />
+          <PersonList loading={loading} persons={badPersons} title="Huonot resurssit" delPerson={this.delPerson} />
+        </section>
       </div>
     );
   }
