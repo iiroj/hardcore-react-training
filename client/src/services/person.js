@@ -1,5 +1,7 @@
 import uuid from 'uuid';
 import faker from 'faker';
+import axios from 'axios';
+
 import random from '../utils/random';
 
 const createPerson = () => {
@@ -12,6 +14,9 @@ const createPerson = () => {
   };
 };
 
+const getPersons = () => axios.get(`${process.env.REACT_APP_API}/person`).then(ret => ret.data);
+
 export default {
   createPerson,
+  getPersons,
 };

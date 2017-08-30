@@ -8,10 +8,11 @@ function createPerson() {
     lastName: faker.name.lastName(),
     firstName: faker.name.firstName(),
     email: faker.internet.email(),
+    gender: random.pick(['m', 'f']),
     age: random.integer(16, 70),
   };
 }
 
 export default {
   createPerson,
-}
+};

@@ -6,15 +6,17 @@ import personService from './services/person';
 
 dotenv.config();
 
-let persons = Range(1, 21).map(personService.createPerson).toList();
+let persons = Range(1, 21)
+  .map(personService.createPerson)
+  .toList();
 
 const app = express();
 app.use(cors());
 
-app.get('/person', function (req, res, next) {
+app.get('/person', function(req, res, next) {
   res.json(persons);
 });
 
 app.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT}`)
-})
+  console.log(`Listening on port ${process.env.PORT}`);
+});
