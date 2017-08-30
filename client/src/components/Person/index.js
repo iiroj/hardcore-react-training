@@ -1,37 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import cx from 'classnames';
+
+import s from './styles.pcss';
 
 const supportedGenders = {
   m: 'mies',
   f: 'nainen',
 };
 
-const Article = styled.article`
-  background-color: hsla(0, 0%, 100%, 1);
-  border-radius: 0.25em;
-  box-shadow: inset 0 0 0 2px hsla(0, 0%, 80%, 1);
-  margin: 0.5em 0;
-  padding: 1em;
-
-  ${props => props.gender === 'm' && css`background-color: hsla(0, 40%, 95%, 1);`};
-  ${props => props.gender === 'f' && css`background-color: hsla(210, 40%, 95%, 1);`};
-`;
-
-const LastName = styled.strong`font-weight: bold;`;
-
 const Person = props => {
   const { person } = props;
 
+  const classNames = cx([
+    s.person,
+    {
+      [s.blue]: person.gender === 'm',
+      [s.pink]: person.gender === 'f',
+    },
+  ]);
+
   return (
-    <Article gender={person.gender}>
-      <p>
-        <LastName>{person.lastName}</LastName>, {person.firstName}
+    <article className={classNames}>
+      <p className={s.name}>
+        <strong>{person.lastName}</strong>, {person.firstName}
       </p>
       <p>
         <span>{supportedGenders[person.gender]}</span>, <span>{person.age}</span>
       </p>
-    </Article>
+    </article>
   );
 };
 
