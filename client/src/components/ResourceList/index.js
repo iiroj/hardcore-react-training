@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import s from './styles.pcss';
 import Loading from '../Loading';
-import Person from '../Person';
+import Resource from '../Resource';
 
-const PersonList = props => {
-  const { loading, persons, delResource } = props;
+const ResourceList = props => {
+  const { loading, resources, delResource } = props;
 
   const title = props.title || 'Lista';
 
@@ -18,7 +18,7 @@ const PersonList = props => {
       </div>
     );
 
-  if (persons.length === 0)
+  if (resources.length === 0)
     return (
       <div className={s.list}>
         <h2 className={s.title}>{title}</h2>
@@ -26,13 +26,13 @@ const PersonList = props => {
       </div>
     );
 
-  const list = persons.map(person => (
-    <li key={person.id}>
-      <Person person={person} delResource={delResource} />
+  const list = resources.map(resource => (
+    <li key={resource.id}>
+      <Resource resource={resource} delResource={delResource} />
     </li>
   ));
 
-  const averageAge = persons.reduce((a, b) => a + b.age, 0) / persons.count();
+  const averageAge = resources.reduce((a, b) => a + b.age, 0) / resources.count();
 
   return (
     <div className={s.list}>
@@ -45,10 +45,10 @@ const PersonList = props => {
   );
 };
 
-PersonList.propTypes = {
+ResourceList.propTypes = {
   delResource: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  persons: PropTypes.array.isRequired,
+  resources: PropTypes.object.isRequired,
 };
 
-export default PersonList;
+export default ResourceList;

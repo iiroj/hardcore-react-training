@@ -11,14 +11,14 @@ const supportedGenders = {
   f: 'nainen',
 };
 
-const Person = props => {
-  const { person, delResource } = props;
+const Resource = props => {
+  const { resource, delResource } = props;
 
   const classNames = cx([
-    s.person,
+    s.resource,
     {
-      [s.blue]: person.gender === 'm',
-      [s.pink]: person.gender === 'f',
+      [s.blue]: resource.gender === 'm',
+      [s.pink]: resource.gender === 'f',
     },
   ]);
 
@@ -26,14 +26,14 @@ const Person = props => {
     <article className={classNames}>
       <div className={s.info}>
         <p className={s.name}>
-          <strong>{person.lastName}</strong>, {person.firstName}
+          <strong>{resource.lastName}</strong>, {resource.firstName}
         </p>
         <p>
-          <span>{supportedGenders[person.gender]}</span>, <span>{person.age}</span>
+          <span>{supportedGenders[resource.gender]}</span>, <span>{resource.age}</span>
         </p>
       </div>
       <footer className={s.footer}>
-        <Button onClick={() => delResource(person.id)} color="red">
+        <Button onClick={() => delResource(resource.id)} color="red">
           Poista resurssi
         </Button>
       </footer>
@@ -41,8 +41,8 @@ const Person = props => {
   );
 };
 
-Person.propTypes = {
-  person: PropTypes.shape({
+Resource.propTypes = {
+  resource: PropTypes.shape({
     id: PropTypes.string.isRequired,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
@@ -51,4 +51,4 @@ Person.propTypes = {
   }),
 };
 
-export default pure(Person);
+export default pure(Resource);

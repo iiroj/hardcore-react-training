@@ -6,14 +6,14 @@ import trollo from '../../assets/trollo.png';
 import resourceService from '../../services/resource';
 import Button from '../form/Button';
 import AddResource from '../AddResource';
-import PersonList from '../PersonList';
+import ResourceList from '../ResourceList';
 
 export default class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
-      persons: List([]),
+      resources: List([]),
     };
   }
 
@@ -21,7 +21,7 @@ export default class App extends PureComponent {
     const oldResources = this.state.persons;
     const newResources = await resourceService.getResources();
     if (oldResources !== newResources) {
-      this.setState({ persons: newResources });
+      this.setState({ resources: newResources });
     }
     this.setState({ loading: false });
   };
@@ -33,13 +33,13 @@ export default class App extends PureComponent {
 
   delResource = id => {
     this.setState({
-      persons: this.state.persons.filterNot(p => p.id === id),
+      resources: this.state.resources.filterNot(p => p.id === id),
     });
   };
 
-  addResource = person => {
+  addResource = resource => {
     this.setState({
-      persons: this.state.persons.push(person),
+      resources: this.state.resources.push(resource),
     });
   };
 
@@ -48,10 +48,10 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const { loading, persons } = this.state;
+    const { loading, resources } = this.state;
 
-    const goodPersons = persons.filter(p => p.age < 30 && p.gender === 'm');
-    const badPersons = persons.filter(p => p.age >= 30 || p.gender === 'f');
+    const goodResources = resources.filter(p => p.age < 30 && p.gender === 'm');
+    const badResources = resources.filter(p => p.age >= 30 || p.gender === 'f');
 
     return (
       <div className={s.app}>
@@ -66,8 +66,8 @@ export default class App extends PureComponent {
           <AddResource addResource={this.addResource} />
         </section>
         <section>
-          <PersonList loading={loading} persons={goodPersons} title="Hyvät resurssit" delResource={this.delResource} />
-          <PersonList loading={loading} persons={badPersons} title="Huonot resurssit" delResource={this.delResource} />
+          <ResourceList loading={loading} resources={goodResources} title="Hyvät resurssit" delResource={this.delResource} />
+          <ResourceList loading={loading} resources={badResources} title="Huonot resurssit" delResource={this.delResource} />
         </section>
       </div>
     );
