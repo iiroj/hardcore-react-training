@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { pure } from 'recompose';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router';
 
@@ -7,26 +8,19 @@ import s from './styles.pcss';
 import Index from '../container/IndexPageContainer';
 import Resource from '../container/ResourcePageContainer';
 
-export default class App extends PureComponent {
-  static propTypes = {
-    getResources: PropTypes.func.isRequired,
-    resources: PropTypes.object.isRequired,
-    loading: PropTypes.bool.isRequired,
-  };
+const App = props => (
+  <div className={s.app}>
+    <Switch>
+      <Route path="/" exact component={Index} />
+      <Route path="/user/:id" component={Resource} />
+    </Switch>
+  </div>
+);
 
-  componentWillMount() {
-    const { getResources } = this.props;
-    getResources();
-  }
+App.propTypes = {
+  getResources: PropTypes.func.isRequired,
+  resources: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
 
-  render() {
-    return (
-      <div className={s.app}>
-        <Switch>
-          <Route path="/" exact component={Index} />
-          <Route path="/user/:id" component={Resource} />
-        </Switch>
-      </div>
-    );
-  }
-}
+export default pure(App);

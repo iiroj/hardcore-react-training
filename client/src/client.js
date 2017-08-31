@@ -10,6 +10,7 @@ import Redbox from 'redbox-react';
 import Root from './Root';
 import { createStore } from './utils/redux';
 import { getMiddlewares, getReducers, getEnhancers, getInitialState } from './config/redux';
+import { getResources } from './ducks/resource';
 
 if (__DEVELOPMENT__) {
   const Perf = require('react-addons-perf');
@@ -18,6 +19,8 @@ if (__DEVELOPMENT__) {
 
 const initialState = getInitialState();
 const store = createStore(getReducers(), getMiddlewares(), getEnhancers(), initialState);
+
+store.dispatch(getResources());
 
 function render(Component, rootElement) {
   if (__DEVELOPMENT__) {
