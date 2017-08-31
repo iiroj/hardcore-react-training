@@ -5,10 +5,7 @@ import Header from '../Header';
 import Loading from '../Loading';
 
 const ResourcePage = props => {
-  const { loading, resources } = props;
-  const id = props.match.params.id;
-  console.log(resources, id);
-  const resource = resources.find(resource => resource.id === id);
+  const { loading, resource } = props;
 
   if (loading)
     return (
