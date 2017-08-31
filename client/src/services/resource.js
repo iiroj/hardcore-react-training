@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import random from '../utils/random';
 
-const createPerson = () => {
+const createResource = () => {
   return {
     id: uuid(),
     lastName: faker.name.lastName(),
@@ -14,12 +14,12 @@ const createPerson = () => {
   };
 };
 
-const getPersons = async () => await axios.get(`${process.env.REACT_APP_API}/person`).then(ret => ret.data);
+const getResources = async () => await axios.get(`${process.env.REACT_APP_API}/person`).then(ret => ret.data);
 
-const delPerson = id => console.log(id);
+const delResource = id => console.log(id);
 
 export default {
-  createPerson,
-  getPersons,
-  delPerson,
+  createResource,
+  getResources,
+  delResource,
 };

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import s from './styles.pcss';
 
 import trollo from '../../assets/trollo.png';
-import personService from '../../services/person';
+import resourceService from '../../services/resource';
 import Button from '../form/Button';
 import AddResource from '../AddResource';
 import PersonList from '../PersonList';
@@ -16,34 +16,34 @@ export default class App extends PureComponent {
     };
   }
 
-  getPersons = async () => {
+  getResources = async () => {
     const oldResources = this.state.persons;
-    const newResources = await personService.getPersons();
+    const newResources = await resourceService.getResources();
     if (oldResources !== newResources) {
       this.setState({ persons: newResources });
     }
     this.setState({ loading: false });
   };
 
-  loadPersons = () => {
+  loadResrouces = () => {
     this.setState({ loading: true });
-    this.getPersons();
+    this.getResources();
   };
 
-  delPerson = id => {
+  delResrouce = id => {
     this.setState({
       persons: this.state.persons.filter(p => p.id !== id),
     });
   };
 
-  addPerson = person => {
+  addResource = person => {
     this.setState({
       persons: this.state.persons.concat([person]),
     });
   };
 
   componentWillMount() {
-    this.loadPersons();
+    this.loadResrouces();
   }
 
   render() {
@@ -62,11 +62,11 @@ export default class App extends PureComponent {
           </Button>
         </header>
         <section>
-          <AddResource addPerson={this.addPerson} />
+          <AddResource addPerson={this.addResource} />
         </section>
         <section>
-          <PersonList loading={loading} persons={goodPersons} title="Hyvät resurssit" delPerson={this.delPerson} />
-          <PersonList loading={loading} persons={badPersons} title="Huonot resurssit" delPerson={this.delPerson} />
+          <PersonList loading={loading} persons={goodPersons} title="Hyvät resurssit" delResource={this.delResource} />
+          <PersonList loading={loading} persons={badPersons} title="Huonot resurssit" delResource={this.delResource} />
         </section>
       </div>
     );

@@ -6,7 +6,7 @@ import Loading from '../Loading';
 import Person from '../Person';
 
 const PersonList = props => {
-  const { loading, persons, delPerson } = props;
+  const { loading, persons, delResource } = props;
 
   const title = props.title || 'Lista';
 
@@ -28,7 +28,7 @@ const PersonList = props => {
 
   const list = persons.map(person => (
     <li key={person.id}>
-      <Person person={person} delPerson={delPerson} />
+      <Person person={person} delResource={delResource} />
     </li>
   ));
 

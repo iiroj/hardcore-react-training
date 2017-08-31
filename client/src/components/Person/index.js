@@ -12,7 +12,7 @@ const supportedGenders = {
 };
 
 const Person = props => {
-  const { person, delPerson } = props;
+  const { person, delResource } = props;
 
   const classNames = cx([
     s.person,
@@ -33,7 +33,7 @@ const Person = props => {
         </p>
       </div>
       <footer className={s.footer}>
-        <Button onClick={() => delPerson(person.id)} color="red">
+        <Button onClick={() => delResource(person.id)} color="red">
           Poista resurssi
         </Button>
       </footer>

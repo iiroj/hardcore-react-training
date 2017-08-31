@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import personService from '../../services/person';
+import resourceService from '../../services/resource';
 import Button from '../form/Button';
 
 export default class AddResource extends PureComponent {
@@ -14,10 +14,9 @@ export default class AddResource extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { addPerson } = this.props;
 
     const person = {
-      ...personService.createPerson(),
+      ...resourceService.addResource(),
       ...this.state,
     };
     addPerson(person);
