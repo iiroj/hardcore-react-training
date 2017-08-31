@@ -15,12 +15,35 @@ const createResource = () => {
   };
 };
 
-const getResources = async () => await axios.get(`${process.env.REACT_APP_API}/person`).then(ret => List(ret.data));
+const getResources = async () => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}/person`);
+    const data = new List(response.data);
+    return data;
+  } catch (error) {
+    return console.error(error);
+  }
+};
 
-const delResource = id => console.log(id);
+const addResource = async resource => {
+  try {
+    console.log(resource);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const delResource = async id => {
+  try {
+    console.log(id);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export default {
   createResource,
   getResources,
+  addResource,
   delResource,
 };

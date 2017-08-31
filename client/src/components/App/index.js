@@ -66,8 +66,18 @@ export default class App extends PureComponent {
           <AddResource addResource={this.addResource} />
         </section>
         <section>
-          <ResourceList loading={loading} resources={goodResources} title="Hyvät resurssit" delResource={this.delResource} />
-          <ResourceList loading={loading} resources={badResources} title="Huonot resurssit" delResource={this.delResource} />
+          <ResourceList
+            loading={loading}
+            resources={goodResources}
+            title="Hyvät resurssit"
+            delResource={this.delResource}
+          />
+          <ResourceList
+            loading={loading}
+            resources={badResources}
+            title="Huonot resurssit"
+            delResource={this.delResource}
+          />
         </section>
       </div>
     );
