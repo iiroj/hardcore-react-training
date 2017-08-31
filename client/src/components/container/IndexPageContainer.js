@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { addResource, delResource } from '../../ducks/resource';
+import { getResources, addResource, delResource } from '../../ducks/resource';
 import IndexPage from '../IndexPage';
 
 export default connect(
@@ -12,6 +12,7 @@ export default connect(
   dispatch =>
     bindActionCreators(
       {
+        getResources,
         addResource,
         delResource,
       },

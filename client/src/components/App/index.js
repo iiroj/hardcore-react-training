@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Switch, Route } from 'react-router';
 
 import s from './styles.pcss';
 
@@ -18,11 +19,11 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const { loading, getResources, resources } = this.props;
-
     return (
       <div className={s.app}>
-        <Index getResources={getResources} resources={resources} loading={loading} />
+        <Switch>
+          <Route path="/" exact component={Index} />
+        </Switch>
       </div>
     );
   }
