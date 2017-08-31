@@ -24,7 +24,7 @@ export default class App extends PureComponent {
       <div className={s.app}>
         <Switch>
           <Route path="/" exact component={Index} />
-          <Route path="/user/:id" exact component={Resource} />
+          <Route path="/user/:id" component={Resource} />
         </Switch>
       </div>
     );
