@@ -13,7 +13,7 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const { loading, resources, addResource, delResource } = this.props;
+    const { loading, resources, getResources, addResource, delResource } = this.props;
 
     const goodResources = resources.filter(p => p.age < 30 && p.gender === 'm');
     const badResources = resources.filter(p => p.age >= 30 || p.gender === 'f');
@@ -23,7 +23,7 @@ export default class App extends PureComponent {
         <header className={s.header}>
           <img src={trollo} alt="trollo" />
           <h1 className={s.heading}>Fraktio ERP</h1>
-          <Button disabled={loading} onClick={() => this.loadPersons()}>
+          <Button disabled={loading} onClick={getResources}>
             Päivitä
           </Button>
         </header>

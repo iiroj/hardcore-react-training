@@ -32,6 +32,9 @@ const resourceReducer = (state = defaultState, action) => {
     case 'DEL_RESOURCE':
       return state.update('resources', resources => resources.filterNot(r => r.id === payload));
 
+    case 'GET_RESOURCES_PENDING':
+      return state.set('loading', true);
+
     case 'GET_RESOURCES_FULFILLED':
       return state.set('resources', payload).set('loading', false);
 
