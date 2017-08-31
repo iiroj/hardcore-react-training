@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import s from './styles.pcss';
 import trollo from '../../assets/trollo.png';
@@ -7,6 +8,14 @@ import AddResource from '../AddResource';
 import ResourceList from '../ResourceList';
 
 export default class App extends PureComponent {
+  static propTypes = {
+    addResource: PropTypes.func.isRequired,
+    delResource: PropTypes.func.isRequired,
+    getResources: PropTypes.func.isRequired,
+    resources: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
+  };
+
   componentWillMount() {
     const { getResources } = this.props;
     getResources();
