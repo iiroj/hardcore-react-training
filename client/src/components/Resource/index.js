@@ -7,7 +7,7 @@ import { pure } from 'recompose';
 import s from './styles.pcss';
 import Button from '../form/Button';
 
-const supportedGenders = {
+export const supportedGenders = {
   m: 'mies',
   f: 'nainen',
 };
