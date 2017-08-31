@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 
+import resourceService from '../../services/resource';
 import Button from '../form/Button';
 
 export default class AddResource extends PureComponent {
@@ -13,12 +14,13 @@ export default class AddResource extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault();
+    const { addResource } = this.props;
 
-    const person = {
-      ...this.props.addResource(),
+    const resource = {
+      ...resourceService.createResource(),
       ...this.state,
     };
-    addPerson(person);
+    addResource(resource);
   };
 
   render = () => {
