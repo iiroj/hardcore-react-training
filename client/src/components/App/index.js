@@ -13,7 +13,7 @@ export default class App extends PureComponent {
     super(props);
     this.state = {
       loading: true,
-      resources: List([]),
+      resources: new List([]),
     };
   }
 
@@ -21,24 +21,24 @@ export default class App extends PureComponent {
     const oldResources = this.state.persons;
     const newResources = await resourceService.getResources();
     if (oldResources !== newResources) {
-      this.setState({ resources: newResources });
+      await this.setState({ resources: newResources });
     }
     this.setState({ loading: false });
   };
 
-  loadResources = () => {
+  loadResources = async () => {
     this.setState({ loading: true });
-    this.getResources();
+    await this.getResources();
   };
 
-  delResource = id => {
+  delResource = async id => {
     this.setState({
       resources: this.state.resources.filterNot(p => p.id === id),
     });
   };
 
-  addResource = resource => {
-    this.setState({
+  addResource = async (resource) => {
+    await this.setState({
       resources: this.state.resources.push(resource),
     });
   };
