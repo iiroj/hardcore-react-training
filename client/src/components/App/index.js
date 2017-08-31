@@ -21,14 +21,14 @@ export default class App extends PureComponent {
     const oldResources = this.state.persons;
     const newResources = await resourceService.getResources();
     if (oldResources !== newResources) {
-      await this.setState({ resources: newResources });
+      this.setState({ resources: newResources });
     }
     this.setState({ loading: false });
   };
 
-  loadResources = async () => {
+  loadResources = () => {
     this.setState({ loading: true });
-    await this.getResources();
+    this.getResources();
   };
 
   delResource = async id => {
@@ -37,8 +37,8 @@ export default class App extends PureComponent {
     });
   };
 
-  addResource = async (resource) => {
-    await this.setState({
+  addResource = async resource => {
+    this.setState({
       resources: this.state.resources.push(resource),
     });
   };
