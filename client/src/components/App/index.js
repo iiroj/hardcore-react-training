@@ -2,15 +2,11 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import s from './styles.pcss';
-import trollo from '../../assets/trollo.png';
-import Button from '../form/Button';
-import AddResource from '../AddResource';
-import ResourceList from '../ResourceList';
+
+import Index from '../container/IndexPageContainer';
 
 export default class App extends PureComponent {
   static propTypes = {
-    addResource: PropTypes.func.isRequired,
-    delResource: PropTypes.func.isRequired,
     getResources: PropTypes.func.isRequired,
     resources: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
@@ -22,27 +18,11 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const { loading, resources, getResources, addResource, delResource } = this.props;
-
-    const goodResources = resources.filter(p => p.age < 30 && p.gender === 'm');
-    const badResources = resources.filter(p => p.age >= 30 || p.gender === 'f');
+    const { loading, getResources, resources } = this.props;
 
     return (
       <div className={s.app}>
-        <header className={s.header}>
-          <img src={trollo} alt="trollo" />
-          <h1 className={s.heading}>Fraktio ERP</h1>
-          <Button disabled={loading} onClick={getResources}>
-            Päivitä
-          </Button>
-        </header>
-        <section>
-          <AddResource addResource={addResource} />
-        </section>
-        <section>
-          <ResourceList loading={loading} resources={goodResources} title="Hyvät resurssit" delResource={delResource} />
-          <ResourceList loading={loading} resources={badResources} title="Huonot resurssit" delResource={delResource} />
-        </section>
+        <Index getResources={getResources} resources={resources} loading={loading} />
       </div>
     );
   }
