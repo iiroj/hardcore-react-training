@@ -32,7 +32,7 @@ const PersonList = props => {
     </li>
   ));
 
-  const averageAge = persons.reduce((a, b) => a + b.age, 0) / persons.length;
+  const averageAge = persons.reduce((a, b) => a + b.age, 0) / persons.count();
 
   return (
     <div className={s.list}>
@@ -46,7 +46,7 @@ const PersonList = props => {
 };
 
 PersonList.propTypes = {
-  delPerson: PropTypes.func.isRequired,
+  delResource: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   persons: PropTypes.array.isRequired,
 };

@@ -1,3 +1,4 @@
+import { List } from 'immutable';
 import uuid from 'uuid';
 import faker from 'faker';
 import axios from 'axios';
@@ -14,7 +15,7 @@ const createResource = () => {
   };
 };
 
-const getResources = async () => await axios.get(`${process.env.REACT_APP_API}/person`).then(ret => ret.data);
+const getResources = async () => await axios.get(`${process.env.REACT_APP_API}/person`).then(ret => List(ret.data));
 
 const delResource = id => console.log(id);
 

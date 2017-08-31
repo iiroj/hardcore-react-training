@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { List } from 'immutable';
 import s from './styles.pcss';
 
 import trollo from '../../assets/trollo.png';
@@ -12,7 +13,7 @@ export default class App extends PureComponent {
     super(props);
     this.state = {
       loading: true,
-      persons: [],
+      persons: List([]),
     };
   }
 
@@ -25,25 +26,25 @@ export default class App extends PureComponent {
     this.setState({ loading: false });
   };
 
-  loadResrouces = () => {
+  loadResources = () => {
     this.setState({ loading: true });
     this.getResources();
   };
 
-  delResrouce = id => {
+  delResource = id => {
     this.setState({
-      persons: this.state.persons.filter(p => p.id !== id),
+      persons: this.state.persons.filterNot(p => p.id === id),
     });
   };
 
   addResource = person => {
     this.setState({
-      persons: this.state.persons.concat([person]),
+      persons: this.state.persons.push(person),
     });
   };
 
   componentWillMount() {
-    this.loadResrouces();
+    this.loadResources();
   }
 
   render() {
@@ -62,7 +63,7 @@ export default class App extends PureComponent {
           </Button>
         </header>
         <section>
-          <AddResource addPerson={this.addResource} />
+          <AddResource addResource={this.addResource} />
         </section>
         <section>
           <PersonList loading={loading} persons={goodPersons} title="Hyvät resurssit" delResource={this.delResource} />
