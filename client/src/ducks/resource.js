@@ -14,12 +14,12 @@ export const getResources = () => ({
 
 export const addResource = resource => ({
   type: 'ADD_RESOURCE',
-  payload: resource,
+  payload: resourceService.addResource(resource),
 });
 
 export const delResource = id => ({
   type: 'DEL_RESOURCE',
-  payload: id,
+  payload: resourceService.delResource(id),
 });
 
 const resourceReducer = (state = defaultState, action) => {

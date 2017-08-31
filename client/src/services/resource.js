@@ -25,17 +25,17 @@ const getResources = async () => {
   }
 };
 
-const addResource = async resource => {
+const addResource = resource => {
   try {
-    console.log(resource);
+    return resource;
   } catch (error) {
     console.error(error);
   }
 };
 
-const delResource = async id => {
+const delResource = id => {
   try {
-    console.log(id);
+    return id;
   } catch (error) {
     console.error(error);
   }
