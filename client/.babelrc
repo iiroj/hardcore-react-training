@@ -6,6 +6,10 @@
         "node": "current"
       },
       "modules": false,
+      "include": [
+        "transform-async-to-generator",
+      ],
+      "useBuiltIns": true
     }]
   ],
   "plugins": [

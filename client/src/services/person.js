@@ -14,7 +14,7 @@ const createPerson = () => {
   };
 };
 
-const getPersons = () => axios.get(`${process.env.REACT_APP_API}/person`).then(ret => ret.data);
+const getPersons = async () => await axios.get(`${process.env.REACT_APP_API}/person`).then(ret => ret.data);
 
 const delPerson = id => console.log(id);
 

@@ -16,13 +16,13 @@ export default class App extends PureComponent {
     };
   }
 
-  getPersons = () => {
-    personService.getPersons().then(persons =>
-      this.setState({
-        persons,
-        loading: false,
-      })
-    );
+  getPersons = async () => {
+    const oldResources = this.state.persons;
+    const newResources = await personService.getPersons();
+    if (oldResources !== newResources) {
+      this.setState({ persons: newResources });
+    }
+    this.setState({ loading: false });
   };
 
   loadPersons = () => {

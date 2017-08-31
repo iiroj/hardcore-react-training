@@ -1,6 +1,8 @@
 /* global document, __DEVELOPMENT__, window */
 /* eslint global-require: "off" */
 
+import 'babel-polyfill';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Redbox from 'redbox-react';
