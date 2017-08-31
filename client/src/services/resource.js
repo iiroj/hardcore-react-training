@@ -21,7 +21,7 @@ const getResources = async () => {
     const data = new List(response.data);
     return data;
   } catch (error) {
-    return console.error(error);
+    return error;
   }
 };
 

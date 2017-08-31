@@ -22,12 +22,12 @@ const store = createStore(getReducers(), getMiddlewares(), getEnhancers(), initi
 function render(Component, rootElement) {
   if (__DEVELOPMENT__) {
     try {
-      ReactDOM.render(<Component />, rootElement);
+      ReactDOM.render(<Component store={store} />, rootElement);
     } catch (e) {
       ReactDOM.render(<Redbox error={e} />, rootElement);
     }
   } else {
-    ReactDOM.render(<Component />, rootElement);
+    ReactDOM.render(<Component store={store} />, rootElement);
   }
 }
 
