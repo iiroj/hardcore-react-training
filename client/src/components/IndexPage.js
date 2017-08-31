@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { pure } from 'recompose';
 
-import s from './styles.pcss';
-import Header from '../Header';
-import AddResource from '../AddResource';
-import ResourceList from '../ResourceList';
+import Header from './Header';
+import AddResource from './AddResource';
+import ResourceList from './ResourceList';
 
 const Index = props => {
   const { loading, resources, getResources, addResource, delResource } = props;
@@ -14,7 +13,7 @@ const Index = props => {
   const badResources = resources.filter(p => p.age >= 30 || p.gender === 'f');
 
   return (
-    <div className={s.app}>
+    <div>
       <Header loading={loading} onClick={getResources} />
       <section>
         <AddResource addResource={addResource} />

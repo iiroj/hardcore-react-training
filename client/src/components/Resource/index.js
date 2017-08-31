@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { Link } from 'react-router-dom';
 import { pure } from 'recompose';
 
 import s from './styles.pcss';
@@ -25,9 +26,9 @@ const Resource = props => {
   return (
     <article className={classNames}>
       <div className={s.info}>
-        <p className={s.name}>
+        <Link className={s.name} to={`/user/${resource.id}`}>
           <strong>{resource.lastName}</strong>, {resource.firstName}
-        </p>
+        </Link>
         <p>
           <span>{supportedGenders[resource.gender]}</span>, <span>{resource.age}</span>
         </p>

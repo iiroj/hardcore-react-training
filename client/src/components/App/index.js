@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router';
 import s from './styles.pcss';
 
 import Index from '../container/IndexPageContainer';
+import Resource from '../container/ResourcePageContainer';
 
 export default class App extends PureComponent {
   static propTypes = {
@@ -23,6 +24,7 @@ export default class App extends PureComponent {
       <div className={s.app}>
         <Switch>
           <Route path="/" exact component={Index} />
+          <Route path="/user/:id" exact component={Resource} />
         </Switch>
       </div>
     );
