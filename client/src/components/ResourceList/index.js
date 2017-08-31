@@ -18,7 +18,7 @@ const ResourceList = props => {
       </div>
     );
 
-  if (resources.length === 0)
+  if (resources.count() === 0)
     return (
       <div className={s.list}>
         <h2 className={s.title}>{title}</h2>
@@ -38,7 +38,7 @@ const ResourceList = props => {
     <div className={s.list}>
       <div className={s.heading}>
         <h2 className={s.title}>{title}</h2>
-        <h3 className={s.age}>Keski-ikä: {averageAge.toFixed(0)}</h3>
+        {resources.count() > 0 && <h3 className={s.age}>Keski-ikä: {averageAge.toFixed(0)}</h3>}
       </div>
       <ul>{list}</ul>
     </div>
