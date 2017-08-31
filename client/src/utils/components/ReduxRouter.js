@@ -34,11 +34,7 @@ class ReduxRouter extends React.Component {
   render() {
     const { children } = this.props;
 
-    return (
-      <Router history={history}>
-        {children}
-      </Router>
-    );
+    return <Router history={history}>{children}</Router>;
   }
 }
 

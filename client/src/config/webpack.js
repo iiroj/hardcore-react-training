@@ -1,4 +1,3 @@
-
 function processCommonLoaders(loaders) {
   return loaders;
 }
@@ -20,4 +19,4 @@ module.exports = {
   processEnvLoaders,
   processCommonPlugins,
   processEnvPlugins,
-}
+};

@@ -8,10 +8,7 @@ function getStyleLoader(env, target, base) {
   switch (env) {
     case 'development':
       if (target === 'browser') {
-        ret.use = [
-          'style-loader',
-          ...ret.use,
-        ];
+        ret.use = ['style-loader', ...ret.use];
       }
       break;
 
@@ -23,10 +20,12 @@ function getStyleLoader(env, target, base) {
         });
       }
       break;
+    default:
+      break;
   }
   return ret;
 }
 
 module.exports = {
   getStyleLoader,
-}
+};

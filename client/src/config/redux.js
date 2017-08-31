@@ -9,17 +9,11 @@ export function getInitialState() {
   return undefined;
 }
 
-
 export function getMiddlewares() {
-  let middlewares = [
-    thunk,
-    promiseMiddleware(),
-  ];
+  let middlewares = [thunk, promiseMiddleware()];
 
   if (__DEVELOPMENT__) {
-    middlewares = middlewares.concat([
-      logger
-    ]);
+    middlewares = middlewares.concat([logger]);
   }
 
   return middlewares;
@@ -30,6 +24,5 @@ export function getReducers() {
 }
 
 export function getEnhancers() {
-  return [
-  ];
+  return [];
 }
