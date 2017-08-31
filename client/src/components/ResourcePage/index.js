@@ -21,7 +21,9 @@ const ResourcePage = props => {
     return (
       <div>
         <Header />
-        <p>Resurssi-identifikaatiolla {props.match.params.id} ei löytynyt resurssia.</p>
+        <p>
+          Resurssi-identifikaatiolla <em>{props.match.params.id}</em> ei löytynyt resurssia.
+        </p>
       </div>
     );
   }

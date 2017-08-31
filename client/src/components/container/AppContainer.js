@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { compose } from 'recompose';
 import { withRouter } from 'react-router';
 
 import { getResources, addResource, delResource } from '../../ducks/resource';
 import App from '../App';
 
-export default withRouter(
+export default compose(
+  withRouter,
   connect(
     state => ({
       loading: state.resource.get('loading'),
@@ -20,5 +22,5 @@ export default withRouter(
         },
         dispatch
       )
-  )(App)
-);
+  )
+)(App);
